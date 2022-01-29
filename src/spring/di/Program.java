@@ -1,6 +1,8 @@
 package spring.di;
 
-import spring.di.entity.*;
+import org.springframework.context.*;
+import org.springframework.context.support.*;
+
 import spring.di.ui.*;
 
 public class Program {
@@ -14,7 +16,11 @@ public class Program {
 		console.setExam(exam);
 		*/
 		
-		ExamConsole console = ?;
+		ApplicationContext context =
+				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+		
+		ExamConsole console = (ExamConsole) context.getBean("console");
+		//ExamConsole console = context.getBean(ExamConsole.class);
 		console.print();
 	}
 
