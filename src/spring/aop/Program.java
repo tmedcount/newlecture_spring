@@ -1,6 +1,7 @@
 package spring.aop;
 
-import java.lang.reflect.*;
+import org.springframework.context.*;
+import org.springframework.context.support.*;
 
 import spring.aop.entity.*;
 
@@ -8,8 +9,18 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		Exam exam = new NewlecExam(1,1,1,1);
+		ApplicationContext context =
+				//new AnnotationConfigApplicationContext(NewlecDIConfig.class);
+				new ClassPathXmlApplicationContext("spring/aop/setting.xml");
 		
+		Exam proxy = (Exam) context.getBean("proxy");
+		
+		System.out.printf("total is %d\n", proxy.total());
+		System.out.printf("avg is %f\n", proxy.avg());
+		
+		/*
+		Exam exam = new NewlecExam(1,1,1,1);
+				
 		Exam proxy = (Exam) Proxy.newProxyInstance(NewlecExam.class.getClassLoader(),
 				new Class[] {Exam.class},
 				new InvocationHandler() {
@@ -29,10 +40,8 @@ public class Program {
 						}
 					}
 				);
-		
-		System.out.printf("total is %d\n", proxy.total());
-		System.out.printf("avg is %f\n", proxy.avg());
-		
+		*/
+
 	}
 
 }
