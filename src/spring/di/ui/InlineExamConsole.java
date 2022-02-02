@@ -22,6 +22,7 @@ public class InlineExamConsole implements ExamConsole {
 	}
 	
 	@Autowired
+	@Qualifier("exam1")
 	@Override
 	public void setExam(Exam exam) {
 		this.exam = exam;
