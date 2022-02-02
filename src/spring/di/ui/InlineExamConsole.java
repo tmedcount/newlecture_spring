@@ -1,13 +1,15 @@
 package spring.di.ui;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
 import spring.di.entity.*;
 
+@Component("console")
 public class InlineExamConsole implements ExamConsole {
 	
-	@Autowired(required = false)
-	@Qualifier("exam1")
+	@Autowired
+	//@Qualifier("exam1")
 	private Exam exam;
 	
 	public InlineExamConsole() {
