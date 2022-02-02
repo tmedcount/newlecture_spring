@@ -1,11 +1,8 @@
 package spring.di;
 
-import java.util.*;
-
 import org.springframework.context.*;
-import org.springframework.context.support.*;
+import org.springframework.context.annotation.*;
 
-import spring.di.entity.*;
 import spring.di.ui.*;
 
 public class Program {
@@ -21,7 +18,8 @@ public class Program {
 		*/
 		
 		ApplicationContext context =
-				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+				new AnnotationConfigApplicationContext(NewlecDIConfig.class);
+				//new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		
 		//Exam exam = context.getBean(Exam.class);
 		//System.out.println(exam.toString());
